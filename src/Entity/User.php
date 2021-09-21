@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -19,16 +21,19 @@ class User
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Assert\NotBlank
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Assert\NotBlank
      */
     private $lastname;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=10, unique=true)
+     * @Assert\NotBlank
      */
     private $phoneNumber;
 
@@ -39,13 +44,21 @@ class User
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Assert\NotBlank
      */
     private $password;
 
     /**
      * @ORM\Column(type="date")
+     *  @Assert\NotBlank
      */
     private $birthday;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $roles = [];
+
 
     public function getId(): ?int
     {
@@ -100,11 +113,6 @@ class User
         return $this;
     }
 
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
     public function setPassword(string $password): self
     {
         $this->password = $password;
@@ -122,5 +130,76 @@ class User
         $this->birthday = $birthday;
 
         return $this;
+    }
+
+    public function setRoles(?array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * return the firstname and the lastname
+     */
+    public function getfullName()
+    {
+        return $this->firstname . $this->lastname;
+    }
+
+    /**
+     * UserInterface function
+     * @return string[]
+     */
+    public function getRoles()
+    {
+        return array_merge($this->roles, ['ROLE_USER']);
+    }
+
+    /**
+     * @return string
+     *
+     * @deprecated since Symfony 5.3, use getUserIdentifier() instead
+     */
+    public function getUsername()
+    {
+        return $this->getPhoneNumber();
+    }
+
+    /**
+     * UserInterface function
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+    }
+
+
+    /**
+     * UserInterface function
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+    }
+
+    /**
+     * UserInterface function
+     * @return string|null The hashed password if any
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * UserInterface function
+     * @return string|null
+     */
+    public function getUserIdentifier()
+    {
     }
 }

@@ -1,0 +1,111 @@
+.mv-icon {
+    font-size: 2em;
+    color:#006e09;
+}
+
+.mv-icon span {
+    font-size: 1.5em;
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+/**
+ *style login
+ */
+.login {
+    background-color: rgb(244, 248, 25);
+    color:#006e09;
+    max-width: 600px;
+}
+
+.loginBtn, .btn {
+    background-color: #006e09;
+    color:white;
+}
+
+.slogan {
+    margin-top: 1em;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 3;
+    justify-content: space-around;
+    padding: 0 !important;
+}
+
+.login ul li {
+    align-self: flex-end;    
+}
+
+/**
+*style menu page d'acceuil
+*/
+.acceuil {
+    max-width: 600px;
+    background-color: rgb(244, 248, 25);
+    margin: 2em auto;
+}
+
+.acceuil .slogan {
+    color:#006e09;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.menu-list{
+    color:#ffffff;
+    font-family: sans-serif;
+    font-size: 1.5em;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: .5em 0 !important;
+}
+
+.menu-list li {
+    margin: .5em 1em;
+    text-align: center;
+}
+
+.menu-list .menu-item, .menu-content {
+    background-color: #006e09;
+    padding: 1em;
+}
+
+.menu-list .menu-item {
+    cursor: pointer;
+}
+
+.menu-list .menu-content {
+    background-color: #ffffff;
+    color: #006e09;
+    margin-right: .2em;
+    margin-left: .2em;
+}
+
+#transfer, #deposit {
+    text-align: left;
+    font-size: .5em;
+}
+
+#transfer, #deposit .form-text{
+    font-size: small;
+}
+
+.menu-list .menu-item:hover {
+    background-color: #00b30f;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #00b30f;
+    border-color: #006e09;
+    color: #ffffff;
+}
+
+.hide-item {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+}

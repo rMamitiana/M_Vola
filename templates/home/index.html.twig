@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container">
+		<div class="acceuil">
+			<div>
+				<p class="text-center mv-icon">
+					<span>MV</span>ola
+				</p>
+				<ul class="slogan">
+					{% for item in slogan %}
+						<li>{{ item }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<ul class="menu-list">
+				{% for item in menus %}
+					{% set page = '/partials/' ~ pages[loop.index0] ~ '.html.twig' %}
+
+					<li id="{{loop.index0}}{{pages[loop.index0]}}">
+						<div id="{{loop.index0}}" class="menu-item" onclick="toogleContent({{loop.index0}})">
+							{{ item }}
+						</div>
+						<div class="menu-content hide-item">{{ include(page) }}</div>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endblock %}
