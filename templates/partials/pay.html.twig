@@ -4,7 +4,10 @@
 
 	<div style="text-align: left;">
 		<h6>Solde principale:</h6>
-		<span>64 545ar</span>
+		<span>
+			{{ user.money ? user.money : 0 }}
+			ar
+		</span>
 	</div>
 
 {% endblock %}

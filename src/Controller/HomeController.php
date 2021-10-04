@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/", name="homepage")
      */
     public function index(): Response
@@ -30,10 +32,12 @@ class HomeController extends AbstractController
             "rapide",
             "sécurisé"
         ];
+
         return $this->render('home/index.html.twig', [
             "menus" => $menus,
             "pages" => $pages,
-            "slogan" => $slogan
+            "slogan" => $slogan,
+            "user" => $this->getUser()
         ]);
     }
 }

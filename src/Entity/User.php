@@ -3,8 +3,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
+use App\Repository\UserRepository;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -163,7 +164,6 @@ class User implements UserInterface
      */
     public function getUsername()
     {
-        return $this->getPhoneNumber();
     }
 
     /**
@@ -201,5 +201,6 @@ class User implements UserInterface
      */
     public function getUserIdentifier()
     {
+        return $this->getPhoneNumber();
     }
 }

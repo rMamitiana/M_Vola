@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserLoginController!
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="mx-auto my-5 login px-4 pt-1 pb-3">
+			<ul class="slogan">
+				<li>Fixe</li>
+				<li>Mobile</li>
+				<li>Internet</li>
+				<li>Mvola</li>
+			</ul>
+			<h1 class="text-center">Bienvenue sur la page de connection</h1>
+			<form action="{{ path('user_login') }}" method="post">
+				<div class="mb-3">
+					<label for="loginPhoneNumber" class="form-label">Numero de téléphone</label>
+					<input type="tel" class="form-control" name="_username" id="loginPhoneNumber" placeholder="034 00 000 00" required>
+				</div>
+				<div class="mb-3">
+					<label for="loginPassword" class="form-label">Mot de passe</label>
+					<input type="password" class="form-control" name="_password" id="loginPassword" placeholder="****" required>
+				</div>
+				<button type="submit" class="btn loginBtn">Connecter</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}

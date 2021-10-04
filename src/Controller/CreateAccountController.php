@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -19,6 +20,7 @@ class CreateAccountController extends AbstractController
         $this->encoder = $encoder;
     }
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/create-account", name="create_account")
      */
     public function index(Request $request, EntityManagerInterface $manager): Response
