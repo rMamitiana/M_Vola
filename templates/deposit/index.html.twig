@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Deposit index
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center my-3">Liste des depots</h1>
+
+	<div class="container">
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>PhoneNumber</th>
+					<th>Money</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for deposit in deposits %}
+					<tr>
+						<td>{{ deposit.id }}</td>
+						<td>{{ deposit.phoneNumber }}</td>
+						<td>{{ deposit.money }}</td>
+						<td>
+							<a class="mx-2" href="{{ path('deposit_delete', {'id': deposit.id}) }}">Anuler</a>
+							<a class="mx-2" href="{{ path('deposit_validate', {'id': deposit.id}) }}">valider</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}

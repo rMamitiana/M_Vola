@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Form\UserType;
@@ -12,6 +12,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+/**
+ * @Route("/admin")
+ */
 class CreateAccountController extends AbstractController
 {
     private $encoder;
@@ -20,7 +23,7 @@ class CreateAccountController extends AbstractController
         $this->encoder = $encoder;
     }
     /**
-     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_USER")
      * @Route("/create-account", name="create_account")
      */
     public function index(Request $request, EntityManagerInterface $manager): Response

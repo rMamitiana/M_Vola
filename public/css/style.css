@@ -84,12 +84,12 @@
     margin-left: .2em;
 }
 
-#transfer, #deposit {
+#transfer, #deposit, #withdrawal {
     text-align: left;
     font-size: .5em;
 }
 
-#transfer, #deposit .form-text{
+#transfer, #deposit .form-text, #withdrawal .form-text{
     font-size: small;
 }
 

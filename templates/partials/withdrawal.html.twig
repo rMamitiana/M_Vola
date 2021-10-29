@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<form id="withdrawal" action="{{ path('withdrawal')}}" method="post">
+
+		<div class="form-group">
+			<label for="withdrawalMoney">Montant</label>
+			<input type="text" class="form-control" name="_username" id="withdrawalMoney" placeholder="2000">
+			<small id="withdrawalMoneyHelp" class="form-text text-muted">La somme de l'argent est en Ariary.</small>
+		</div>
+		<button type="submit" class="btn btn-primary mt-3">Retirer</button>
+
+	</form>
+
+{% endblock %}

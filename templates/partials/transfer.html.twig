@@ -1,21 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<form id="transfer" action="/" method="post">
+	<form id="transfer" action="{{ path('transfer') }}" method="post">
 
 		<div class="form-group">
 			<label for="phoneNumber">Numéro bénéficiaire</label>
-			<input type="text" class="form-control" id="phoneNumber" placeholder="034 00 000 00">
+			<input type="text" class="form-control" name="_username" id="phoneNumber" placeholder="034 00 000 00">
 			<small id="phoneNumberHelp" class="form-text text-muted">Veuillez bien vérifier le numéro du bénéficiaire avant d'envoyer.</small>
 		</div>
 		<div class="form-group">
 			<label for="transferMoney">Montant</label>
-			<input type="text" class="form-control" id="transferMoney" placeholder="2000">
+			<input type="text" class="form-control" name="_money" id="transferMoney" placeholder="2000">
 			<small id="transferMoneyHelp" class="form-text text-muted">La somme de l'argent est en Ariary.</small>
-		</div>
-		<div class="form-group">
-			<label for="transferPassword">Mot de passe</label>
-			<input type="password" class="form-control" id="transferPassword" placeholder="****">
 		</div>
 		<button type="submit" class="btn btn-primary mt-3">Transferer</button>
 
