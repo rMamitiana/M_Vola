@@ -5,6 +5,7 @@
 		<div class="acceuil">
 			<div>
 				<p class="text-center mv-icon">
+					{{ user.lastname }} {{ user.firstname }} <br>
 					<span>MV</span>ola
 				</p>
 				<ul class="slogan">
@@ -29,6 +30,14 @@
 				<li>
 					<a href="#">Mon compte</a>
 				</li>
+				{% if 'ROLE_ADMIN' in user.roles %}
+					<li>
+						<a href="{{ path('create_account') }}">Creer compte Mvola</a>
+					</li>
+					<li>
+						<a href="{{ path('deposit_index') }}">Validation depot</a>
+					</li>
+				{% endif %}
 				<li>
 					<a href="{{ path('user_logout') }}">Se deconnecter</a>
 				</li>
